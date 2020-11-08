@@ -1,9 +1,5 @@
 #include <stdio.h>
 
-//char x = 0b00010010;
-
-//char a = 3 << x;
-
 enum Value {Five = 5, Seven = 7, Eleven = 11, Thirteen = 13} number;
 
 void FirstMethod(enum Value number)
