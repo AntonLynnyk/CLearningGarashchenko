@@ -121,14 +121,14 @@ void TestMethod2()
         printf("%d\n", d3);
 }
 
-void TestMethod()
+void TestMethod1()
 {
     printf("Hello World!\n");
 }
 
 int main()
 {
-    TestMethod();
+    TestMethod1();
 
     TestMethod2();
 
