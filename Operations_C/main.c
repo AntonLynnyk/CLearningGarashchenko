@@ -15,15 +15,10 @@ void FirstMethod(int number)
 void DisplayTypeSize()
 {
     printf(" char in bytes = %d\n ",sizeof (char));
-
     printf("short in bytes = %d\n ",sizeof (short));
-
     printf("int in bytes = %d\n ",sizeof (int));
-
     printf("unsigned int in bytes = %d\n ",sizeof (unsigned int));
-
     printf("float in bytes = %d\n ",sizeof (float));
-
     printf("double in bytes = %d\n ",sizeof (double));
 }
 
@@ -43,15 +38,11 @@ int Compare(int a, int b)
 void MoveBites()
 {
     unsigned char x = 0b00010010;
-
     unsigned char n = x << 3;
-
     unsigned char m = n >> 2;
 
     printf("Number before the move is %d\n", x);
-
     printf("Number after triple left shift is %d\n", n);
-
     printf("Number after double right shift is %d\n", m);
 }
 
@@ -76,20 +67,15 @@ int XOR (char a, char b)
 
 void PrintBites(int x)
 {
-    int firstLoopVar = x;
-
-    int cellCounter = 0;
-
-    while (firstLoopVar > 0)
-    {
-        firstLoopVar = firstLoopVar / 2;
-
-        cellCounter++;
-    }
-
-    int Binary[cellCounter];
-
+    int cellsAmount = sizeof (x) * 8; //8 bits in 1 byte
+    int loopCounter = cellsAmount;
     int unit;
+    int Binary[cellsAmount];
+
+    for(int i = 0; i < cellsAmount; i++)
+    {
+        Binary[i] = 0;
+    }
 
     while (x > 0)
     {
@@ -97,14 +83,14 @@ void PrintBites(int x)
 
         x = x / 2;
 
-        Binary[cellCounter - 1] = unit;
+        Binary[loopCounter - 1] = unit;
 
-        cellCounter--;
+        loopCounter--;
     }
 
     printf("Your number in binary is: ");
 
-    for (int i = 0; i < sizeof(Binary) / sizeof (Binary[0]); i++)
+    for (int i = 0; i < cellsAmount; i++)
     {
         printf("%d", Binary[i]);
     }
