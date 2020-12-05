@@ -1,10 +1,16 @@
 #include <stdio.h>
 
-void SortArray(int Array[], int sizeOfArray)
+void Swap(int *left, int *right)
+{
+    int temp = *left;
+    *left = *right;
+    *right = temp;
+}
+
+void SortArray(int array[], int sizeOfArray)
 {
     int minElement = 0;
     int thisElement = 0;
-    int helpElement = 0;
 
     for(int i = 0; i < sizeOfArray - 1; i++)
     {
@@ -12,26 +18,26 @@ void SortArray(int Array[], int sizeOfArray)
 
         for(thisElement = i; thisElement < sizeOfArray; thisElement++)
         {
-            if(Array[thisElement] < Array[minElement])
+            if(array[thisElement] < array[minElement])
             {
-                helpElement = Array[minElement];
-                Array[minElement] = Array[thisElement];
-                Array[thisElement] = helpElement;
+                Swap(&array[minElement], &array[thisElement]);
             }
         }
     }
 
+    printf("Sorted array:\n");
+
     for (int k = 0; k < sizeOfArray; k++)
     {
-        printf("Sorted Array: %d\n", Array[k]);
+        printf("%d\n", array[k]);
     }
 }
 
 int main()
 {
-    int UnsortedArray[] = {5, 14, 2, 1, -17, 4, 100, 832, -72, 44, 141};
+    int unsortedArray[] = {5, 14, 2, 1, -17, 4, 100, 832, -72, 44, 141};
 
-    SortArray(UnsortedArray, sizeof(UnsortedArray) / sizeof(UnsortedArray[0]));
+    SortArray(unsortedArray, sizeof(unsortedArray) / sizeof(unsortedArray[0]));
 
     return 0;
 }
