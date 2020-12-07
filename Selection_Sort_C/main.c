@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+void PrintArray(int array[], int sizeOfArray)
+{
+    printf("Sorted array: \n");
+
+    for(int k = 0; k < sizeOfArray; k++)
+    {
+        printf("%d\n", array[k]);
+    }
+}
+
 void Swap(int *left, int *right)
 {
     int temp = *left;
@@ -24,20 +34,17 @@ void SortArray(int array[], int sizeOfArray)
             }
         }
     }
-
-    printf("Sorted array:\n");
-
-    for (int k = 0; k < sizeOfArray; k++)
-    {
-        printf("%d\n", array[k]);
-    }
 }
 
 int main()
 {
     int unsortedArray[] = {5, 14, 2, 1, -17, 4, 100, 832, -72, 44, 141};
 
-    SortArray(unsortedArray, sizeof(unsortedArray) / sizeof(unsortedArray[0]));
+    int sizeOfArray = sizeof(unsortedArray) / sizeof(unsortedArray[0]);
+
+    SortArray(unsortedArray, sizeOfArray);
+
+    PrintArray(unsortedArray, sizeOfArray);
 
     return 0;
 }
