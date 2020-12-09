@@ -38,13 +38,11 @@ void SortArray(int array[], int sizeOfArray)
 
 int main()
 {
-    int unsortedArray[] = {5, 14, 2, 1, -17, 4, 100, 832, -72, 44, 141};
+    int array[] = {5, 14, 2, 1, -17, 4, 100, 832, -72, 44, 141};
+    int sizeOfArray = sizeof(array) / sizeof(array[0]);
 
-    int sizeOfArray = sizeof(unsortedArray) / sizeof(unsortedArray[0]);
-
-    SortArray(unsortedArray, sizeOfArray);
-
-    PrintArray(unsortedArray, sizeOfArray);
+    SortArray(array, sizeOfArray);
+    PrintArray(array, sizeOfArray);
 
     return 0;
 }
