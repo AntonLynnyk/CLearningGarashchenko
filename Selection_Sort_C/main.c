@@ -2,7 +2,7 @@
 
 void PrintArray(int array[], int sizeOfArray)
 {
-    printf("Sorted array: \n");
+    printf("Array: \n");
 
     for(int k = 0; k < sizeOfArray; k++)
     {
