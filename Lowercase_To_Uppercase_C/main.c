@@ -1,58 +1,67 @@
 #include <stdio.h>
 
-char FromLowerToUppercase(char letter)
+enum characters {lowerCase, upperCase, noLetter}types;
+
+void PrintCharacter(enum characters forPrint, char letter)
 {
-    char uppercaseLetter = letter - 32;
-    return uppercaseLetter;
+    switch (forPrint)
+       {
+           case lowerCase:
+               printf("Uppercase letter is: %c\n", letter);
+               break;
+           case upperCase:
+               printf("You already entered uppercase letter: %c\n", letter);
+               break;
+           case noLetter:
+               printf("Your entered character is not a letter: %c\n", letter);
+               break;
+       }
 }
 
-void PrintAnswer(int a, char character)
+char GetUppercaseLetter(char letter)
 {
-    char uppercaseLetter;
+    letter = letter - 32;
 
-    switch (a)
-    {
-        case 1:
-            uppercaseLetter = FromLowerToUppercase(character);
-            printf("Uppercase of %c", character);
-            printf(" is %c\n", uppercaseLetter);
-            break;
-        case 2:
-            printf("You already entered uppercase letter: %c\n", character);
-            break;
-        case 3:
-            printf("Your entered character is not a letter: %c\n", character);
-            break;
-    }
+    return letter;
 }
 
-int IsLetterOrUppercaseLetter(char letter)
+enum characters GetTypeOfCharacter(char character)
 {
-    if(letter > 96 && letter < 123)
+    if(character > 96 && character < 123)
     {
-        return 1;
+        return lowerCase;
     }
-    else if (letter > 64 && letter < 91)
+    else if(character > 64 && character < 91)
     {
-        return 2;
+        return upperCase;
     }
-    else
-    {
-        return 3;
-    }
+    else return noLetter;
 }
 
 int main()
 {
+    char character;
+
     printf("Please, enter your lowercase letter.\n");
 
-    char letter;
+    scanf("%c", &character);
 
-    scanf("%c", &letter);
+    enum characters typeOfCharacter = GetTypeOfCharacter(character);
 
-    int choise = IsLetterOrUppercaseLetter(letter);
-
-    PrintAnswer(choise, letter);
+    if(typeOfCharacter == lowerCase)
+    {
+        char upperCaseLetter = GetUppercaseLetter(character);
+        PrintCharacter(lowerCase, upperCaseLetter);
+    }
+    else if(typeOfCharacter == upperCase)
+    {
+        PrintCharacter(upperCase, character);
+    }
+    else if(typeOfCharacter == noLetter)
+    {
+        PrintCharacter(noLetter, character);
+    }
+    else printf("Something get wrong.");
 
     return 0;
 }
