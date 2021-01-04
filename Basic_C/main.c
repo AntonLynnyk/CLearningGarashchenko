@@ -1,14 +1,14 @@
 #include <stdio.h>
 
-char letter = 65; //'A'
+char letter = 65; // 'A'
 
-int number = 0x1;   //1
+int number = 0x1;   // 1
 
-long biggerNumber = 0x64;   //100
+long biggerNumber = 0x64;   // 100
 
-short smallerNumber = 0x80; //128
+short smallerNumber = 0x80; // 128
 
-int FF = 0xFF;  //256
+int FF = 0xFF;  // 256
 
 float const PI = 3.141592653F;
 
