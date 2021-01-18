@@ -40,10 +40,9 @@ enum characters GetTypeOfCharacter(char character)
 
 int main()
 {
-    char character;
-
     printf("Please, enter your lowercase letter.\n");
 
+    char character;
     scanf("%c", &character);
 
     enum characters typeOfCharacter = GetTypeOfCharacter(character);
