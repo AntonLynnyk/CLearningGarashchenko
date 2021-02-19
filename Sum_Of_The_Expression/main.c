@@ -1,14 +1,12 @@
 #include <stdio.h>
 
-int Count(int a, int b)
+int ExpressionCount(int n, int k)
 {
     int sum = 0;
-    int temp;
 
-    for(int i = 1; i <= a; i++)
+    for(int i = 1; i <= n; i++)
     {
-        temp = i * b;
-        sum += temp;
+        sum += i * k;
     }
     return sum;
 }
@@ -26,7 +24,7 @@ int main()
     int k;
     scanf("%d%d", &n, &k);
 
-    int result = Count(n, k);
+    int result = ExpressionCount(n, k);
 
     PrintResult(result);
 
