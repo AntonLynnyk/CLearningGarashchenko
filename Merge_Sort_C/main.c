@@ -2,7 +2,7 @@
 
 void PrintArray(int array[], int sizeOfArray)
 {
-    for(int i = 0; i < sizeOfArray; i++)
+    for (int i = 0; i < sizeOfArray; i++)
     {
         printf("%d  ", array[i]);
     }
@@ -11,12 +11,11 @@ void PrintArray(int array[], int sizeOfArray)
 
 void MergeArrays(int array[], int leftHalf[], int rightHalf[], int left, int right)
 {
-    int i = 0;
-    int j = 0;
-    int k = 0;
+    int i = 0, j = 0, k = 0;
 
-    while (i < left && j < right) {
-        if(leftHalf[i] <= rightHalf[j])
+    while (i < left && j < right)
+    {
+        if (leftHalf[i] <= rightHalf[j])
         {
             array[k++] = leftHalf[i++];
         }
@@ -25,37 +24,46 @@ void MergeArrays(int array[], int leftHalf[], int rightHalf[], int left, int rig
             array[k++] = rightHalf[j++];
         }
     }
+
     while (i < left)
     {
         array[k++] = leftHalf[i++];
     }
+
     while (j < right)
     {
         array[k++] = rightHalf[j++];
     }
 }
 
+void CopyArray(int source[], int sizeOfSource, int leftHalfArray[], int leftArraySize, int rightHalfArray[])
+{
+    for (int i = 0; i < leftArraySize; i++)
+    {
+        leftHalfArray[i] = source[i];
+    }
+
+    for (int i = leftArraySize; i < sizeOfSource; i++)
+    {
+        rightHalfArray[i - leftArraySize] = source[i];
+    }
+}
+
 void SortArray(int array[], int sizeOfArray)
 {
-    if(sizeOfArray < 2) return;
+    if (sizeOfArray < 2) return;
 
-    int beforeMiddle = sizeOfArray / 2;
-    int afterMiddle = sizeOfArray - beforeMiddle;
-    int leftHalf[beforeMiddle];
-    int rightHalf[afterMiddle];
+    int leftArraySize = sizeOfArray / 2;
+    int rightArraySize = sizeOfArray - leftArraySize;
+    int leftHalfArray[leftArraySize];
+    int rightHalfArray[rightArraySize];
 
-    for(int i = 0; i < beforeMiddle; i++)
-    {
-        leftHalf[i] = array[i];
-    }
-    for(int i = beforeMiddle; i < sizeOfArray; i++)
-    {
-        rightHalf[i - beforeMiddle] = array[i];
-    }
-    SortArray(leftHalf, beforeMiddle);
-    SortArray(rightHalf, afterMiddle);
+    CopyArray(array, sizeOfArray, leftHalfArray, leftArraySize, rightHalfArray);
 
-    MergeArrays(array, leftHalf, rightHalf, beforeMiddle, afterMiddle);
+    SortArray(leftHalfArray, leftArraySize);
+    SortArray(rightHalfArray, rightArraySize);
+
+    MergeArrays(array, leftHalfArray, rightHalfArray, leftArraySize, rightArraySize);
 }
 
 int main()
